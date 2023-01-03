@@ -1,24 +1,22 @@
-const container = document.getElementById('container');
-const resetButton = document.getElementById('reset-button');
+document.addEventListener("DOMContentLoaded", function(){
+    createContainer(32);
+    console.log("second")
+})
 
-// Create the grid cells
-for (let i = 0; i < 256; i++) {
-  const cell = document.createElement('div');
-  cell.classList.add('grid-cell');
-  container.appendChild(cell);
+function createContainer(size){
+    console.log("third");
+    let container = document.querySelector(".container");
+
+    container.style.gridTemplateColumns = `repeat (${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat (${size}, 1fr)`;
+
+    let numDivs = size * size
+    
+    for(let i = 0; i < numDivs; i++){
+        let div = document.createElement("div");
+        div.style.backgroundColor = "yellow";
+        container.insertAdjacentElement("beforeend", div);
+    }
+    console.log("fourth")
+
 }
-
-// Add event listeners to paint cells black when hovered over
-const cells = document.querySelectorAll('.grid-cell');
-cells.forEach(cell => {
-  cell.addEventListener('mouseenter', () => {
-    cell.classList.add('painted');
-  });
-});
-
-// Reset the grid when the reset button is clicked
-resetButton.addEventListener('click', () => {
-  cells.forEach(cell => {
-    cell.classList.remove('painted');
-  });
-});
