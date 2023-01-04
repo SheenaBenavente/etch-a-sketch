@@ -1,3 +1,5 @@
+let color = "black";
+
 document.addEventListener("DOMContentLoaded", function(){
     createContainer(32);
 
@@ -20,12 +22,10 @@ function createContainer(size){
     
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
-        div.addEventListener("mouseover", function(){
-            div.style.backgroundColor = "black"
-        }) 
+        div.addEventListener("mouseover", colorDiv) 
         container.insertAdjacentElement("beforeend", div);
     }
-    console.log("createcontiner last");
+    console.log("createcontainer last");
 
 }
 
@@ -44,4 +44,16 @@ function getSize(){
         return input;
     }
     console.log("getsize last");
+}
+
+function colorDiv(){
+    if (color == "random"){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    }
+    else this.style.backgroundColor = `black`;
+}
+
+function setColor(colorChoice){
+    color = colorChoice;
+
 }
