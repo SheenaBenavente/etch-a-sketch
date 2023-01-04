@@ -1,5 +1,6 @@
 let color = "black";
 
+
 document.addEventListener("DOMContentLoaded", function(){
     createContainer(32);
 
@@ -8,11 +9,9 @@ document.addEventListener("DOMContentLoaded", function(){
         let size = getSize();
         createContainer(size);
     })
-    console.log("run all last")
 })
 
 function createContainer(size){
-    console.log("createcontiner first");
     let container = document.querySelector(".container");
 
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -25,12 +24,9 @@ function createContainer(size){
         div.addEventListener("mouseover", colorDiv) 
         container.insertAdjacentElement("beforeend", div);
     }
-    console.log("createcontainer last");
-
 }
 
 function getSize(){
-    console.log("get size first");
     let input = prompt("what is the size of your board?");
     let message = document.querySelector("#message");
     if(input == ""){
@@ -43,7 +39,6 @@ function getSize(){
         message.innerHTML = "Start the Game!"
         return input;
     }
-    console.log("getsize last");
 }
 
 function colorDiv(){
@@ -55,5 +50,9 @@ function colorDiv(){
 
 function setColor(colorChoice){
     color = colorChoice;
-
 }
+
+function resetContainer(){
+    let divs = document.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "white");
+    }
